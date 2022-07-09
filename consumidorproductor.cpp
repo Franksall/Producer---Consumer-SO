@@ -54,3 +54,38 @@ void ConsumerProducer_Class::wait(){
 void ConsumerProducer_Class::signal(){
 	advancing_semaphore = true;
 }
+// Metodos princiaples
+void ConsumerProducer_Class::Producer(std::string item){
+	if(isAvailable() != true)	return;
+	std::cout << "Estado del productor: Comprobando si el buffer está lleno..." << std::endl;
+	wait();
+	checkFull();
+	if(full_semaphore == true){
+		std::cout << "[Error]: El búfer está lleno, es necesario utilizar el consumidor." << std::endl;
+		signal();
+		return;
+	}
+
+	std::cout << "Estado del productor: [trabajando >:v]" << std::endl;
+	wait(); 
+
+	std::cout << "[trabajando ando :D]: Accediendo al contenedor..." << std::endl;
+	wait();
+
+
+	std::cout << "[trabajando]: Guardando elemento..." << std::endl;
+	container[container_counter] = item;
+	container_counter++;
+		
+	// Esto hace que sea circular
+	if (container_counter == 20){ 
+		container_counter = 0; 
+	}
+
+	std::cout << "[trabajando]: Elemento guardado." << std::endl;
+	std::cout << "[trabajando]: Proceso terminado." << std::endl;
+
+	std::cout << "Estado del productor: [durmiendo]" << std::endl;
+
+	signal(); // desbloquea advance_semaphore
+}
