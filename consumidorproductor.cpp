@@ -150,3 +150,17 @@ void ConsumerProducer_Class::checkEmpty(){
 	}	
 	empty_semaphore = true;
 }
+// -------- PUBLIC METHODS --------
+
+// Constructor/Destructor
+ConsumerProducer_Class::ConsumerProducer_Class(){
+	for(int i=0; i<20; i++){ // Todos los espacios vacíos
+		container[i] = "";
+	}
+	std::cout << "Sistema despierto. Estado: Esperando instrucciones" << std::endl;
+}
+ConsumerProducer_Class::~ConsumerProducer_Class(){
+	for(int i=0; i<20; i++){ // Todos los espacios vacíos
+		container[i] = "";
+	}
+}
