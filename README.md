@@ -42,11 +42,8 @@
 - Aprender sobre el funcionamiento de Productor - Consumidor, donde nos ayudara a asimlar al momento de trabajar con cualqueir Sistema Operativo
 
 ### TEMAS
--   El Patrón FLYWEIGHT
--   Los componentes que conforman el patrón.
--   Estructura del patrón del patrón FLYWEIGHT
--   Diagrama de secuencia del patrón FLYWEIGHT
--   El Escenario.
+-   Productor
+-   Consumidor
 -   La implementación.
 -   La Ejecución.
 
