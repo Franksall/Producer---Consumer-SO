@@ -120,3 +120,33 @@ void ConsumerProducer_Class::Consumer(){
 
 	signal(); // desbloquea advance_semaphore
 }
+// verificadores
+bool ConsumerProducer_Class::isAvailable(){
+	if(advancing_semaphore != true){
+		std::cout<<"[Error]: No se puede hacer ahora, hay un proceso en marcha."<<std::endl;
+		return false;
+	}
+	else return true;
+}
+void ConsumerProducer_Class::checkFull(){
+	// Si hay un espacio de memoria con ""
+	// 	significa que no está lleno.
+	for(int i=0; i<20; i++){
+		if(container[i].size() == 0){
+			full_semaphore = false;
+			return;
+		}
+	}	
+	full_semaphore = true;
+}
+void ConsumerProducer_Class::checkEmpty(){
+	// si todos los espacios de memoria son ""
+	// 	significa que está vacío
+	for(int i=0; i<20; i++){
+		if(container[i].size() != 0){
+			empty_semaphore = false;
+			return;
+		}
+	}	
+	empty_semaphore = true;
+}
