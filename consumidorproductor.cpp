@@ -89,3 +89,34 @@ void ConsumerProducer_Class::Producer(std::string item){
 
 	signal(); // desbloquea advance_semaphore
 }
+
+void ConsumerProducer_Class::Consumer(){
+	if(isAvailable() != true) return;
+	checkEmpty();
+	if(empty_semaphore == true){
+		std::cout << "Estado del consumidor: [Error]: No hay artículos para consumir. Usar productor." << std::endl;
+		return;
+	}
+
+	std::cout << "Estado del consumidor: [trabajando]" << std::endl;
+	wait(); // bloquea advancing_semaphore
+
+	std::cout << "[trabajando]: Accediendo al contenedor..." << std::endl;
+
+	std::cout << "[trabajando]: Consumiendo elemento..." << std::endl;
+	std::string deleted_item = container[consumer_counter];
+	container[consumer_counter] = "";
+	consumer_counter++;
+	
+
+	if (consumer_counter == 20){ 
+		consumer_counter = 0; 
+	}
+
+	std::cout << "[trabajando]: Elemnto [ " << deleted_item << " ] consumido." << std::endl;
+	std::cout << "[trabajando]: Proceso terminado." << std::endl;
+
+	std::cout << "Estado del consumidor: [durmiendo]" << std::endl;
+
+	signal(); // desbloquea advance_semaphore
+}
