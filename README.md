@@ -5,7 +5,8 @@
             <th><img src="https://github.com/rescobedoulasalle/git_github/blob/main/ulasalle.png?raw=true" alt="EPIS" style="width:50%; height:auto"/></th>
             <th>
                 <span style="font-weight:bold;">UNIVERSIDAD LA SALLE</span><br />
-                <span style="font-weight:bold;">CARRERA PROFESIONAL DE INGENIERÍA DE SOFTWARE</span>
+                <span style="font-weight:bold;">CARRERA PROFESIONAL DE INGENIERÍA DE SOFTWARE</span><br />
+                <span style="font-weight:bold;">Sistemas Operativos</span>
             </th>            
         </tr>
     </theader>
@@ -21,11 +22,7 @@
     </theader>
 <tbody>
 
-<tr><td>TÍTULO DE LA PRÁCTICA:</td><td>PATRONES DE DISEÑO: FLYWEIGHT</td></tr>
-<tr><td colspan="2">RECURSOS:
-    <ul>
-    <li>Oscar J Blancarte Iturralde. Introducción a los patrones de diseño. Un enfoque práctico (Spanish Edition. CreateSpace Independent Publishing Platform (2016)</li>
-    </ul>
+<tr><td>TÍTULO DE LA PRÁCTICA:</td><td>Productor - Consumidor</td></tr>
 </td>
 </<tr>
 <tr><td colspan="2">DOCENTES:
@@ -37,12 +34,12 @@
 </tdbody>
 </table>
 
-# PATRONES DE DISEÑO: FLYWEIGHT
+# Productor - Consumidor
 
 ## OBJETIVOS Y TEMAS
 
 ### OBJETIVOS
-- Aprender el patrón FLYWEIGHT.
+- Aprender sobre el funcionamiento de Productor - Consumidor, donde nos ayudara a asimlar al momento de trabajar con cualqueir Sistema Operativo
 
 ### TEMAS
 -   El Patrón FLYWEIGHT
