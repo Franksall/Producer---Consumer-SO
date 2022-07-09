@@ -43,16 +43,16 @@
 
 ### TEMAS
 -   Marco Conceptual
--   Productor
--   Consumidor
+-   Declaración del problema
 -   La implementación.
 -   La Ejecución.
 
 ## MARCO CONCEPTUAL
 
-
-
 ### Problema del consumidor productor que usa Semáforos
+<h1 align="center">
+  <a href="two"><img src= "https://i.postimg.cc/C1KfvH36/Captura-de-pantalla-2022-07-09-000603.png" width="600"/></a>
+</h1>
 -   Semáforos en el sistema operativo, interproceso El problema del consumidor del Productor de Comunicación
 es un problema de sincronización clásico. Podemos resolver este problema mediante el uso de semáforos.
 Un semáforo S es una variable entera a la que sólo se puede acceder a través de dos operaciones estándar: wait() y signal().
@@ -62,17 +62,12 @@ Los semáforos son de dos tipos:
 - Semáforo binario – Esto es similar a mutex lock pero no es lo mismo. Solo puede tener dos valores: 0 y 1. Su valor se inicializa en 1. Se utiliza para implementar la solución del problema de la sección crítica con múltiples procesos.
  
 - Conteo de semáforos – Su valor puede variar sobre un dominio sin restricciones. Se utiliza para controlar el acceso a un recurso que tiene varias instancias.
-<h1 align="center">
-  <a href="https://animejs.com"><img src="https://refactoring.guru/images/patterns/content/flyweight/flyweight.png?id=e34fbacb847dd609b5e68aaf252c4db0"  width="400"/></a>
-</h1>
 
 
+## Declaración del problema
+Tenemos un buffer de tamaño fijo. Un productor puede producir un artículo y puede colocarlo en el búfer. Un consumidor puede elegir artículos y consumirlos. Tenemos que asegurarnos de que cuando un productor coloca un artículo en el búfer, al mismo tiempo el consumidor no debe consumir ningún artículo. En este problema, el búfer es la sección crítica.
 
-
-## Los componentes que conforman el patrón son:
-- Client: Objeto que dispara la ejecución.
-- FlyweightFactory: Fábrica que utilizaremos para crear los objetos Flyweight u objetos ligeros.
-- Flyweight: Corresponde a los objetos que deseamos reutilizar
+Para resolver este problema, necesitamos dos semáforos de conteo: Lleno y Vacío. "Lleno" realiza un seguimiento del número de elementos en el búfer en un momento dado y "Vacío" realiza un seguimiento del número de ranuras desocupadas.
 
 <h1 align="center">
   <a href="two"><img src= "https://i.postimg.cc/TPFvGfrY/Captura-de-pantalla-2022-07-07-223822.png" width="600"/></a>
@@ -90,149 +85,45 @@ Flyweight es un patrón que almmacena su cache para que despues puede reutilizar
 - Fuente: (Blancarte, O.) Ilustración 90: Diagrama de secuencia del patrón Flyweight.
 
 
-## El escenario:
+## Implementacion
 
-Tenemos unas Listas de reproducción sin utilizar Flyweight, que para poder esuchar los ultimos hits del momento escucharemso reptetivamente algunas canciones, esto pasa ya que mas del 80% de las canciones estan guardadas en distintas copias de la misma lsita de reproduccion. Lo que no queremos es que el programa ppueda consumir memoria, mas de lo que se esta consumiendo ahora.
+Al momento crear las clases se peude ver necesitaremos distintas librerias espcialmente para poder llamar al codigo o realizar las funciones, ya que si nos las implementamos nos sera mas dificil al momento de la construccion del codigo.
+
 <h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/0QgMj6mz/Captura-de-pantalla-2022-07-07-231059.png" width="600"/></a>
+  <a href="two"><img src= "https://i.postimg.cc/Hx4TFVMc/Captura-de-pantalla-2022-07-09-001308.png" width="600"/></a>
 </h1>
-- Fuente: (Blancarte, O.) Ilustración 91: Listas de reproducción sin utilizar Flyweight.
+Tendremos que crear metodos privados, donde crearemos un metodo donde nos permitira permitir o bloquear dicho funcionamiento, es donde llamaos la libreria de ctime, que nos va ser util para un mejor funcinamiento y eficacia del codigo.
 
-## La solución:
-
-
-El patrón de diseño Flyweight, que nos ayudará a reutilizar los objetos de las listas. Donde en vez de que las listas de musica las dividamos en distintas memorias, nosotrs vamos a agruparlas donde los elemnetos comunes se unificaran, asi consumiremos menos cache, ademas de que sera mas facil para algun usuario al momento de elegir la musica, y no habra el 80% de repeticiones de canciones que existen.
 <h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/xTNwycbf/Captura-de-pantalla-2022-07-07-231551.png" width="600"/></a>
-</h1>
-- Fuente: (Blancarte, O.) Ilustración 92: Lista de reproducción utilizando el patrón Flyweight.
-
-# Creacion del 1er Proyecto
-
-## La solución:
-
-
-Las clases van a estar divididas en 4. Donde se vera cada parte de la implementacion de dichas estas. 
-<h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/B6HR2zzq/Captura-de-pantalla-2022-07-07-233632.png" width="600"/></a>
-</h1>
-- Fuente: (Blancarte, O.) Ilustración 94: Diagrama de clases del proyecto Flyweight.
-
-## Creacion de proyecto
-Este proyecto esta divido en en 4 partes. Donde tenemos 4 carpetas creadas
-
-
-
-En cada una de estas tendremos las diferentes clases:
-
-
-
-
-##Clase PlayItem:
-En esta clase se utiliza para poder identificar la canciones, estas tienen un ID, a la vez se puede saber atravezde un arreglo los byte, y asi controlar el espacio de memoria que podemos dar.
-<h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/Qtsx9vN3/Captura-de-pantalla-2022-07-08-000530.png" width="600"/></a>
+  <a href="two"><img src= "https://i.postimg.cc/TwPkvsLV/Captura-de-pantalla-2022-07-09-001710.png" width="600"/></a>
 </h1>
 
-## Clase PlayItemFactory:
-Se puede que en esta calse es donde nace el Playthem, donde sirve para evaluar si la cancion estae xistiendo, o se hace una busqueda acerca de estta cancion en el map PLAY_ITEMS.
+Los metodos principales son quienes despeus de crear los metodos privados se encargaran de evaluar y introduci lso datso segun las funciones que llamen, ademas que tambien se efectuara el control de tiempos segun los datos ingresados.
 <h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/N0GQQmds/Captura-de-pantalla-2022-07-08-000814.png" width="600"/></a>
-</h1>
-## Clase PlayList:
-En esta clase donde encontramos la aprte extrinseca, osea que podemos ver la reutilizacion de objetos de Playtem.
-<h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/nc15p5gm/Captura-de-pantalla-2022-07-08-001015.png" width="600"/></a>
-</h1>
-
-## Clase FlyweightMain:
-
-Es la clase principal donde llamamos a cada uno de las clases para poder utilizar sus metodos, asi al momento de ejecutar podremos simular las canciones que se pueden reproducir.
-
-<h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/cLnnQyWg/Captura-de-pantalla-2022-07-08-001255.png" width="600"/></a>
+  <a href="two"><img src= "https://i.postimg.cc/J4jSq9b0/Captura-de-pantalla-2022-07-09-002139.png" width="600"/></a>
 </h1>
 
 
-
-## Ejecucion:
-
-Como se puede ver en la imagen, se ve que creamos 174 listas de reproduccion, donde el maximo de mb es 2116, pero la ultima linea nos dice que solo se utilizo 1827.
+Los verificadores son un control de If donde lo utilizaremos para poder evaluar si los contenedores estan vaciones o no, si su almacenamiento esta lleno, despues devolvemos el dato semaforode del dato informado.
 <h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/cLrVhhk8/Captura-de-pantalla-2022-07-08-001508.png" width="600"/></a>
+  <a href="two"><img src= "https://i.postimg.cc/Gp6j6pRC/Captura-de-pantalla-2022-07-09-002458.png" width="600"/></a>
+</h1>
+
+Indicamos el constructor y el Destructor, que en el sistema sera un buen uso la momento despues de eliminar un dato, ya que el sistema se evaluaria y si no hat datos, pediria datos al iterador del sistema.   
+<h1 align="center">
+  <a href="two"><img src= "https://i.postimg.cc/bYmZvBGG/Captura-de-pantalla-2022-07-09-002837.png" width="600"/></a>
 </h1>
 
 
-
-# Creacion del 2do Proyecto
-
-
-## Clase principal
-La clase principal es donde vamos a llamar a todas las clases, practicamente se utiliza tambien para poder generar un random acerca de las variables que se van insertando. 
+Finalmente tendriamos nuestro main donde llamamos nuestros metodos utilizados, segun la respuesta del menu iterativo que se realizo, donde cada opcion hace que el dato vata a un metodo, retornando el tiempo de ejecucion y el resultado esperado.
 <h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/BvYVYCTn/Captura-de-pantalla-2022-06-27-091108.png" width="600"/></a>
+  <a href="two"><img src= "https://i.postimg.cc/kG2qGwZ8/Captura-de-pantalla-2022-07-09-003127.png" width="600"/></a>
 </h1>
 
-
-
-## Clase Empleado
-La clase empleado es una interfz donde añadimos los metodos que vamos a utilizar.
-<h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/MTJdrrcx/Captura-de-pantalla-2022-06-27-092006.png" width="600"/></a>
-</h1>
-
-
-## Clase FactoryEmpleado
-En FactoryEmpleado tenemos los tipos de empleos que se vana asignando dependiendo del random que se obtenga.
-<h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/QCQtJC2h/Captura-de-pantalla-2022-06-27-092314.png" width="600"/></a>
-</h1>
-
-
-## Clase Desarrollador
-Esta clase vemos su privita final es intrisenco, ya que no cambiara su variable, donde tambien muestra en pantalla las hbailidades y el trabajo del tester.
-<h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/j5Vt3KQ5/Captura-de-pantalla-2022-06-27-092409.png" width="600"/></a>
-</h1>
-
-## Clase Tester
-Esta clase con el clase de desarrollador es donde se conectan mutuamente. y asi puden retornar el mismo resultado
-<h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/52TVj1r3/Captura-de-pantalla-2022-06-27-092446.png" width="600"/></a>
-</h1>
-
-
-## Clase Director
-Esta clase tiene los datos practicamente de todos los estudiantes, incluido el profe, donde en esta llamamos a las demas clases para poder asignar als habiliades y la informacion
-<h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/YqycyMtH/Captura-de-pantalla-2022-06-27-092522.png" width="600"/></a>
-</h1>
-
-## Ejecucion
-Como se puede en la imagen ahi se tiene la creacion del codigo con el Patron FLYWEIGHT.
-<h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/JhDNnD6X/Captura-de-pantalla-2022-07-08-003641.png" width="600"/></a>
-</h1>
-## EJERCICIOS PROPUESTOS
-
--   Se han creado estructuras complejas con objetos más pequeños.
-    -   Modificamos la línea 16 y establecemos el tamaño del arreglo playListNames en
-    174, lo que significa que crearemos este número de listas de reproducción.
-    Modificamos la línea 28 para que quede de la siguiente manera:
-    
-    
--   Elabore los ejemplos y analice los resultados.
-
-
-## REFERENCIAS
--   Oscar J Blancarte Iturralde. Introducción a los patrones de diseño_ Un enfoque práctico (Spanish Edition. CreateSpace Independent Publishing Platform (2016)
 
 
 ## ENTREGABLES
-https://drive.google.com/drive/folders/1S5wlaQm66TdT_QAa0zISRGw_tS5ATxqP?usp=sharing
-
-
-https://github.com/Franksall/Patron-Flyweight
-
+https://drive.google.com/drive/folders/1_fRyAu5Ymi3CdkDmdV5hA73JX4j1OnGt
+https://github.com/Franksall/Producer---Consumer-SO
 
 https://www.youtube.com/watch?v=kdrPz0_pKKI
