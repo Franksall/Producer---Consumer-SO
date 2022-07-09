@@ -40,3 +40,17 @@ public:
 	void useProducer(std::string item); //productor y sconsu
 	void useConsumer();
 };
+// -------- Metodos privado--------
+
+// Procesos de permitir o bloquear
+void ConsumerProducer_Class::wait(){
+	// Se generar un nuemror andom
+	std::srand(std::time(nullptr));
+	int timing = rand() % 6;
+
+	sleep(timing);
+	advancing_semaphore = false;
+}
+void ConsumerProducer_Class::signal(){
+	advancing_semaphore = true;
+}
