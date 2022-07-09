@@ -167,5 +167,45 @@ ConsumerProducer_Class::~ConsumerProducer_Class(){
 // Interface methods
 void ConsumerProducer_Class::useProducer(std::string item){ Producer(item); }
 void ConsumerProducer_Class::useConsumer()			   { Consumer(); 	 }
+using namespace std;
+
+int menu(){
+	int desition;
+	cout << "--Menu--" << endl;
+	cout << "1) Productor"
+			"\n2) Consumidor"
+			"\n3) Salir." << endl;
+	cin >> desition;
+	return desition;
+}
+
+int main(){
+	ConsumerProducer_Class consumer_producer;
+	cout << "Demostración de productor/consumidor con semáforos" << endl;
+	
+	while(1){
+		int select = menu();
+		switch(select){
+		case 1:{
+			cin.ignore(numeric_limits<streamsize>::max(),'\n');
+
+			string item;
+			cout << "Insertar elemento" << endl;
+			getline(cin, item); 
+			std::cout << "Enviando [ "<< item << " ] al productor." << std::endl;
+			consumer_producer.useProducer(item);
+			}
+		break;
+		case 2:
+			consumer_producer.useConsumer();
+		break;
+
+		default:
+			exit(0);
+		break;
+		}
+	}
+	return 0;
+}
 
 
