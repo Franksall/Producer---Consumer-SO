@@ -42,18 +42,26 @@
 - Aprender sobre el funcionamiento de Productor - Consumidor, donde nos ayudara a asimlar al momento de trabajar con cualqueir Sistema Operativo
 
 ### TEMAS
+-   Marco Conceptual
 -   Productor
 -   Consumidor
 -   La implementación.
 -   La Ejecución.
 
-## CONTENIDO DE LA GUÍA
+## MARCO CONCEPTUAL
 
-### MARCO CONCEPTUAL
 
--   PATRONES DE DISEÑO: FLYWEIGHT
-    -   Flyweight o peso ligero, también conocido como Caché, es un patrón de diseño estructural que permite encajar más objetos en la cantidad de RAM disponible compartiendo partes de su estado entre múltiples objetos en lugar de mantener toda la información en cada objeto.
-NOTA: Flyweight se apoya en el patrón Factory Method para su implementación.
+
+### Problema del consumidor productor que usa Semáforos
+-   Semáforos en el sistema operativo, interproceso El problema del consumidor del Productor de Comunicación
+es un problema de sincronización clásico. Podemos resolver este problema mediante el uso de semáforos.
+Un semáforo S es una variable entera a la que sólo se puede acceder a través de dos operaciones estándar: wait() y signal().
+La operación wait() reduce el valor del semáforo en 1 y la operación signal() aumenta su valor en 1.
+Los semáforos son de dos tipos:
+
+- Semáforo binario – Esto es similar a mutex lock pero no es lo mismo. Solo puede tener dos valores: 0 y 1. Su valor se inicializa en 1. Se utiliza para implementar la solución del problema de la sección crítica con múltiples procesos.
+ 
+- Conteo de semáforos – Su valor puede variar sobre un dominio sin restricciones. Se utiliza para controlar el acceso a un recurso que tiene varias instancias.
 <h1 align="center">
   <a href="https://animejs.com"><img src="https://refactoring.guru/images/patterns/content/flyweight/flyweight.png?id=e34fbacb847dd609b5e68aaf252c4db0"  width="400"/></a>
 </h1>
