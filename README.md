@@ -69,21 +69,6 @@ Tenemos un buffer de tamaño fijo. Un productor puede producir un artículo y pu
 
 Para resolver este problema, necesitamos dos semáforos de conteo: Lleno y Vacío. "Lleno" realiza un seguimiento del número de elementos en el búfer en un momento dado y "Vacío" realiza un seguimiento del número de ranuras desocupadas.
 
-<h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/TPFvGfrY/Captura-de-pantalla-2022-07-07-223822.png" width="600"/></a>
-</h1>
-  
-  ## El diagrama interpreta:
-1. El cliente solicita al Factory la creación de un objeto Flyweight.
-2. El Factory verifica si ya existe un objeto identico, si ya existe entonces devuelve como respuesta que hay un objeto existtente, pero en caso contrario crea un nuevo objeto, y asi posteriormente lo utiliza.
-3. El objeto Flyweight que ya es creado del cachey lo retorna al cliente.
-cliente.
-Flyweight es un patrón que almmacena su cache para que despues puede reutilizarlo cuando algun usuario solicite el objeto.
-<h1 align="center">
-  <a href="two"><img src= "https://i.postimg.cc/2y4PYWwC/Captura-de-pantalla-2022-07-07-225211.png" width="600"/></a>
-</h1>
-- Fuente: (Blancarte, O.) Ilustración 90: Diagrama de secuencia del patrón Flyweight.
-
 
 ## Implementacion
 
@@ -124,6 +109,8 @@ Finalmente tendriamos nuestro main donde llamamos nuestros metodos utilizados, s
 
 ## ENTREGABLES
 https://drive.google.com/drive/folders/1_fRyAu5Ymi3CdkDmdV5hA73JX4j1OnGt
+
+
 https://github.com/Franksall/Producer---Consumer-SO
 
 https://www.youtube.com/watch?v=kdrPz0_pKKI
