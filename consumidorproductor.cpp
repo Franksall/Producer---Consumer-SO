@@ -164,3 +164,8 @@ ConsumerProducer_Class::~ConsumerProducer_Class(){
 		container[i] = "";
 	}
 }
+// Interface methods
+void ConsumerProducer_Class::useProducer(std::string item){ Producer(item); }
+void ConsumerProducer_Class::useConsumer()			   { Consumer(); 	 }
+
+
